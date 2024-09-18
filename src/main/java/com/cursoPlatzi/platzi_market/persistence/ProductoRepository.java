@@ -1,16 +1,21 @@
 package com.cursoPlatzi.platzi_market.persistence;
 
+import com.cursoPlatzi.platzi_market.domain.Product;
 import com.cursoPlatzi.platzi_market.persistence.crud.ProductoCrudRepository;
 import com.cursoPlatzi.platzi_market.persistence.entity.Producto;
+import com.cursoPlatzi.platzi_market.persistence.mapper.ProductMapper;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
 @Repository
-public class ProductoRepository {
+public class ProductoRepository implements ProductRepository {
+
     private ProductoCrudRepository ProductoCrudRepository;
-    public List<Producto> getAll(){
-        return (List<Producto>) ProductoCrudRepository.findAll();
+    private ProductMapper mapper;
+    public List<Product> getAll(){
+        List<Producto> productos = (List<Producto>) ProductoCrudRepository.findAll();
+        return mapper.toProducts(productos);git
     }
     public List<Producto> getByCategoria(int idCategoria){
         return ProductoCrudRepository.findByIdCategoria(idCategoria);
