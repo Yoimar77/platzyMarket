@@ -3,7 +3,7 @@ package com.cursoPlatzi.platzi_market.domain;
 public class Category {
     private int categoryId;
     private String categoryName;
-    private boolean active;
+    private Boolean active;
 
     public int getCategoryId() {
         return categoryId;

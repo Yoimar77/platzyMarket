@@ -11,4 +11,5 @@ public interface ProductRepository {
     Optional<Product> getProduct(int idProduct);
     Product save(Product product);
     void delete(int productId);
+    boolean exists(int productId);
 }
